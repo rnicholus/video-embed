@@ -1,5 +1,5 @@
 {
-  "name": "video-embed",
+  "name": "video-embed-element",
   "version": "0.0.1",
   "description": "A web component that provides an easy and common way to embed and address videos, regardless of the origin.",
   "main": "video-embed.html",
