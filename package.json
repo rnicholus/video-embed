@@ -1,0 +1,33 @@
+{
+  "name": "video-embed",
+  "version": "0.0.1",
+  "description": "A web component that provides an easy and common way to embed and address videos, regardless of the origin.",
+  "main": "video-embed.html",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rnicholus/video-embed.git"
+  },
+  "keywords": [
+    "video",
+    "web-components",
+    "youtube",
+    "vimeo",
+    "promise"
+  ],
+  "author": "Ray Nicholus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rnicholus/video-embed/issues"
+  },
+  "homepage": "https://github.com/rnicholus/video-embed",
+  "devDependencies": {
+    "web-component-tester": "2.2.x",
+    "webcomponents.js": "0.6.0"
+  },
+  "dependencies": {
+    "native-promise-only": "0.7.6-a"
+  }
+}
