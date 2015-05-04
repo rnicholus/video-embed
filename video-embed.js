@@ -5,9 +5,9 @@
 
         fire = function (node, type) {
             var event = new CustomEvent(type, {
-                    bubbles: true,
-                    cancelable: true
-                });
+                bubbles: true,
+                cancelable: true
+            });
             node.dispatchEvent(event);
         },
 
@@ -50,6 +50,16 @@
 
                     onPlayerReady = function() {
                         fire(api, 'ready');
+                        player.addEventListener('onStateChange', function() {
+                            switch(player.getPlayerState()) {
+                                case 1:
+                                    fire(api, 'playing');
+                                    break;
+                                case 2:
+                                    fire(api, 'paused');
+                                    break;
+                            }
+                        });
                         resolve(player);
                     },
 
@@ -104,6 +114,8 @@
                 var player = $f(iframe);
                 player.addEvent('ready', function() {
                     fire(api, 'ready');
+                    player.addEvent('pause', fire.bind(api, api, 'paused'));
+                    player.addEvent('play', fire.bind(api, api, 'playing'));
                     resolve(player);
                 });
             });
@@ -122,7 +134,8 @@
 
             createdCallback: {
                 value: function() {
-                    var template = importDoc.querySelector('#video-embed-template'),
+                    var templates = importDoc.querySelectorAll('.video-embed-template'),
+                        template = templates[templates.length - 1],
                         clone = document.importNode(template.content, true),
                         root = this.createShadowRoot();
 
